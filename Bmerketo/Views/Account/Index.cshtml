@@ -1,0 +1,78 @@
+﻿@model UserProfileEntity
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_LayoutCenterScreen.cshtml";
+}
+<h1>My Account  - @User.FindFirst("DisplayName")?.Value</h1>
+<a asp-controller="Account" asp-action="SignOut">Sign Out</a>
+
+<h1>Account  - @User.Identity.Name</h1>
+
+
+<h1>My Account  - @User.FindFirst("UserId")?.Value</h1>
+
+
+
+
+
+
+
+
+
+
+<div class="Row text">
+    <div class="col-md-8" offset-2>
+        
+        <div class="Row">
+            <div class="col-md-8" offset-2>
+              
+                   
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                    <input asp-for="FirstName" class="form-control" readonly/>
+                       
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                    <input asp-for="LastName" class="form-control" readonly />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StreetName"></label>
+                    <input asp-for="StreetName" class="form-control" readonly />
+                      
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City"></label>
+                    <input asp-for="City" class="form-control" readonly />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PostalCode"></label>
+                    <input asp-for="PostalCode" class="form-control" readonly />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"></label>
+                    <input asp-for="PhoneNumber" class="form-control" readonly />
+                     
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Company"></label>
+                    <input asp-for="Company" class="form-control" readonly />
+                       
+                    </div>
+                  
+               
+                  
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

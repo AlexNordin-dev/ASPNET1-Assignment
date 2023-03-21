@@ -1,0 +1,83 @@
+﻿@model Bmerketo.Models.ViewModels.NewProductVM
+
+@{
+    ViewData["Title"] = "Update ";
+    Layout = "~/Views/Shared/_LayoutCenterScreen.cshtml";
+}
+<section>
+    <div class="Row text d-flex justify-content-center">
+        <div class="col-md-8" offset-2>
+            <p> <h1>Update Color</h1></p>
+            <div class="Row">
+                <div class="col-md-8" offset-2>
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        <div asp.asp-validation-summary="ModelOnly" class="text-danger">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ProductName" class="control-label"></label>
+                            <input asp-for="ProductName" class="form-control" />
+                            <span asp-validation-for="ProductName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ProductPrice" class="control-label"></label>
+                            <input asp-for="ProductPrice" class="form-control" />
+                            <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SKU" class="control-label"></label>
+                            <input asp-for="SKU" class="form-control" />
+                            <span asp-validation-for="SKU" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Quantity" class="control-label"></label>
+                            <input asp-for="Quantity" class="form-control" />
+                            <span asp-validation-for="Quantity" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ShortDescription" class="control-label"></label>
+                            <input asp-for="ShortDescription" class="form-control" />
+                            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LongDescription" class="control-label"></label>
+                            <input asp-for="LongDescription" class="form-control" />
+                            <span asp-validation-for="LongDescription" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BrandEntityId" class="control-label"></label>
+                            <select asp-for="BrandEntityId" class="form-control" asp-items="ViewBag.BrandEntityId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CategoryEntityId" class="control-label"></label>
+                            <select asp-for="CategoryEntityId" class="form-control" asp-items="ViewBag.CategoryEntityId"></select>
+                        </div>
+
+                        <div class="form-group selectpicker">
+
+                            <label asp-for="ColorEntityIds" class="control-label"></label>
+                            <select asp-for="ColorEntityIds" class="form-control" asp-items="ViewBag.ColorEntityIds" MultiSelectList></select>
+                            <span asp-validation-for="ColorEntityIds" class="text-danger"></span>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ImageFile" class="control-label"></label>
+                            <input asp-for="ImageFile" class="form-control" accept="image/*" />
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                            <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+

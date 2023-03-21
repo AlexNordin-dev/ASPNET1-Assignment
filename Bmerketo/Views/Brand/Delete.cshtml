@@ -1,0 +1,33 @@
+﻿@model Bmerketo.Models.Entities.BrandEntity
+
+@{
+    ViewData["Title"] = "Delete Brand";
+    Layout = "~/Views/Shared/_LayoutCenterScreen.cshtml";
+}
+<div class="Row text">
+    <div class="col-md-8" offset-2>
+        <p> <h1>Delete</h1></p>
+        <div class="Row">
+            <div class="col-md-8" offset-2>
+
+                <div asp.asp-validation-summary="ModelOnly" class="text-danger">
+                </div>
+                <div class="form-group">
+                    <label asp-for="BrandName"></label>
+                    <input asp-for="BrandName" class="form-control" readonly />
+
+                </div>
+                <div class="form-group">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id"/>
+                        <button type="submit" value="Confirm" class="btn btn-danger float-right">Delete</button>
+                    </form>
+                    <a class="btn btn-outline-secondary float-laft" asp-action="Index">Show All</a>
+                    
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

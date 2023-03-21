@@ -1,0 +1,91 @@
+﻿
+<header>
+    <div class="container">
+        <a class="logotype" asp-controller="Home" asp-action="Index">@ViewData["SiteName"]</a>
+
+        <div id="menu" class="collapse">
+
+            <nav id="menu-links" class="menu-links">
+
+                @*  <div class='logo'>
+                <img src="~/Image/Site/Logo.png" alt="logo" />
+                <h1>bmerketo</h1>
+                </div>*@
+
+                <a class="menu-link" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="menu-link" asp-controller="Product" asp-action="Index">Product</a>
+                <a class="menu-link" asp-controller="Home" asp-action="Contact">Contacts</a>
+
+
+                @if (User.IsInRole("Administrator"))
+                {
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                <i class="fa-light fa-folder-gear"></i> Management
+
+                            </button>
+                            <ul class="dropdown-menu">
+                                <a class="menu-link" asp-controller="Admin" asp-action="Index"><i class="fa-solid fa-user-tie"></i> Admin Center</a>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-controller="Product" asp-action="Index"><i class="fa-sharp fa-regular fa-cart-circle-exclamation"></i> Product</a></li>
+                                
+                                <li> <a class="dropdown-item" asp-controller="Brand" asp-action="Index"><i class="fa-solid fa-copyright"></i> Brand</a></li>
+                                <li><a class="dropdown-item" asp-controller="Category" asp-action="Index"><i class="fa-solid fa-folder-tree"></i> Category</a></li>
+                                <li><a class="dropdown-item" asp-controller="Color" asp-action="Index"><i class="fa-solid fa-fill-drip"></i> Color</a></li>
+
+
+                            </ul>
+                        </li>
+                    </ul>
+                   
+                }
+
+
+            </nav>
+
+            <nav id="menu-icons" class="menu-icons">
+                <a class="menu-link" asp-controller="Products" asp-action="Search"><i class="fa-regular fa-search"></i></a>
+
+
+
+                @if (User.IsInRole("User"))
+                {
+                    <a class="menu-link" asp-controller="Products" asp-action="Compare">
+                        <i class="fa-regular fa-code-compare"></i>
+                        <span class="menu-badge">0</span>
+                    </a>
+                    <a class="menu-link" asp-controller="Shopping" asp-action="Favorites"><i class="fa-regular fa-heart"></i></a>
+                    <a class="menu-link" asp-controller="Shopping" asp-action="Index">
+                        <i class="fa-regular fa-bag-shopping"></i>
+                        <span class="menu-badge">0</span>
+                    </a>
+                }
+                @if (User.IsInRole("Administrator"))
+                {
+                        <a class="menu-link" asp-controller="Products" asp-action="Compare">
+                            <i class="fa-regular fa-code-compare"></i>
+                            <span class="menu-badge">0</span>
+                        </a>
+                        <a class="menu-link" asp-controller="Shopping" asp-action="Favorites"><i class="fa-regular fa-heart"></i></a>
+                        <a class="menu-link" asp-controller="Shopping" asp-action="Index">
+                            <i class="fa-regular fa-bag-shopping"></i>
+                            <span class="menu-badge">0</span>
+                        </a>
+                }
+
+
+
+                <a class="menu-link ms-5" asp-controller="Account" asp-action="Index"><i class="fa-regular fa-user"></i></a>
+            </nav>
+        </div>
+
+
+        <div id="toggle-icon" class="menu-icons">
+            <button class="menu-link" data-bs-toggle="collapse" data-bs-target="#menu">
+                <i class="fa-regular fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>

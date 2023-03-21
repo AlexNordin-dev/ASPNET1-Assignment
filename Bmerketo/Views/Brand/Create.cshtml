@@ -1,0 +1,29 @@
+﻿@model Bmerketo.Models.Entities.BrandEntity
+
+@{
+    ViewData["Title"] = "Crad Brand";
+    Layout = "~/Views/Shared/_LayoutCenterScreen.cshtml";
+}
+<div class="Row text">
+    <div class="col-md-8" offset-2>
+        <p> <h1>Add a new Brand</h1></p>
+        <div class="Row">
+            <div class="col-md-8" offset-2>
+                <form asp-action="Create">
+                    <div asp.asp-validation-summary="ModelOnly" class="text-danger">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BrandName"></label>
+                        <input asp-for="BrandName" class="form-control" />
+                        <span asp-validation-for="BrandName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

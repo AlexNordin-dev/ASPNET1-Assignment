@@ -1,0 +1,56 @@
+﻿@model ProductCollectionViewModel
+<!-- Top selling products in this week -->
+<section>
+
+    <div class="row d-flex justify-content-center">
+        <h1 class="row d-flex justify-content-center p-5">Top selling products in this week</h1>
+        <section class="featured-products">
+            <div class="container">
+
+                <div class="product-grid">
+
+
+                    @foreach (var item in Model.Products.Take(8).OrderBy(x => x.ProductPrice))
+                    {
+
+                        <div class="product-card">
+                            <div class="product-card-img">
+                                <img src="@("~/image/product/"+item.ImageName)" asp-append-version="true" width="100%" alt="@item.ImageAlt">
+                                <div class="product-card-menu">
+                                    <nav class="menu-icons">
+                                        <a class="menu-link" href="#"><i class="fa-regular fa-code-compare"></i></a>
+                                        @if (User.IsInRole("User"))
+                                        {
+                                            <a class="menu-link" href="#"><i class="fa-regular fa-heart"></i></a>
+                                        }
+                                        <a class="menu-link" href="#"><i class="fa-regular fa-bag-shopping"></i></a>
+                                    </nav>
+
+                                    <a class="btn-theme" asp-controller="Product" asp-action="Detials" asp-route-id="@item.Id">
+                                        <i class="bi bi-eye-fill"></i> Show Details
+                                    </a>
+                                </div>
+
+
+                            </div>
+                            <div class="product-card-body">
+                                <p class="product-card-category">@item.CategoryEntity.CategoryName</p>
+                                <p class="product-card-title">@item.ProductName</p>
+                                <div class="product-card-rating">
+                                    <i class="fa-solid fa-sharp fa-star"></i>
+                                    <i class="fa-solid fa-sharp fa-star"></i>
+                                    <i class="fa-solid fa-sharp fa-star"></i>
+                                    <i class="fa-solid fa-sharp fa-star"></i>
+                                    <i class="fa-regular fa-sharp fa-star"></i>
+                                </div>
+                                <p class="product-card-price">@item.ProductPrice.ToString("c")</p>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </section>
+
+    </div>
+</section>

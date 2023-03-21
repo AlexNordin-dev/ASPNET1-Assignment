@@ -1,0 +1,14 @@
+﻿@model ProductCollectionViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<partial name="~/Views/Shared/Partials/showcase/_Showcase.cshtml" />
+
+@*@await Html.PartialAsync("~/Views/Shared/Partials/Products/_Category.cshtml", Model )*@
+
+@await Html.PartialAsync("~/Views/Shared/Partials/Products/_BestCollection.cshtml", Model )
+@await Html.PartialAsync("~/Views/Shared/Partials/Products/_TopSelling.cshtml", Model )
+
+<partial name="~/Views/Shared/Partials/_Subscribe.cshtml" />

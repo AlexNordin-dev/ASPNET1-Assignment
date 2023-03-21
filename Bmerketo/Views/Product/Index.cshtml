@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Bmerketo.Models.Entities.ProductEntity>
+
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+
+<div class="row d-flex justify-content-center">
+    <form class="form-inline my-2 my-lg-0" asp-controller="Product" asp-action="Index" style="padding-right: 25px;">
+        <input name="searchString" type="text" class="form-control" placeholder="Search for ...">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-light fa-magnifying-glass"></i></button>
+    </form>
+    <button class="btn btn-secondary btn-sm" type="button"><a asp-action="Index"><i class="fa-solid fa-backward"></i> Show all</a></button>
+    <br />
+    <section class="featured-products">
+        <div class="container">
+            <div class="product-grid">
+                @foreach (var item in Model)
+                {
+
+                    <div class="product-card">
+
+                        <div class="product-card-img">
+                            <img src="@("~/image/product/"+item.ImageName)" asp-append-version="true" width="100%" alt="@item.ImageAlt">
+                            <div class="product-card-menu">
+                                <nav class="menu-icons">
+                                    <a class="menu-link" href="#"><i class="fa-regular fa-code-compare"></i></a>
+                                    <a class="menu-link" href="#"><i class="fa-regular fa-heart"></i></a>
+
+                                    <a class="menu-link" asp-controller="Orders" asp-action="AddItemToShoppingCart"
+                                   asp-route-id="@item.Id"><i class="fa-regular fa-bag-shopping"></i> </a>
+                                </nav>
+
+                                <a class="btn-theme" asp-controller="Product" asp-action="Detials" asp-route-id="@item.Id">
+                                    <i class="bi bi-eye-fill"></i> Show Details
+                                </a>
+                            </div>
+
+
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-card-category">@item.CategoryEntity.CategoryName</p>
+                            <p class="product-card-title">@item.ProductName</p>
+                            <div class="product-card-rating">
+                                <i class="fa-solid fa-sharp fa-star"></i>
+                                <i class="fa-solid fa-sharp fa-star"></i>
+                                <i class="fa-solid fa-sharp fa-star"></i>
+                                <i class="fa-solid fa-sharp fa-star"></i>
+                                <i class="fa-regular fa-sharp fa-star"></i>
+                            </div>
+                            <p class="product-card-price">@item.ProductPrice.ToString("c")</p>
+                        </div>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <div class="align-middle">
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-file-pen"></i> Edit </a>
+                                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i> Delete </a>
+                            </div>
+                        }
+
+                    </div>
+
+                }
+            </div>
+        </div>
+         @if (User.IsInRole("Administrator"))
+        {
+            <div class="text-white" style="position:  fixed; right:25px; bottom: 25px;">
+                <a class="btn btn-success text-white" asp-controller="Product" asp-action="Create"><i class="fa-regular fa-plus"></i> New </a>
+            </div>
+        }
+       
+    </section>
+
+</div>
+

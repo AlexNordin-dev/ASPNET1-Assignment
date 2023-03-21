@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Bmerketo.Models.Entities.CategoryEntity>
+
+
+
+<div class="row">
+
+
+   <ul>
+
+        @foreach (var item in Model)
+
+        {
+            <li>
+                <a href="#">@item.CategoryName</a>
+            </li>
+        }
+
+    </ul>
+
+</div>
